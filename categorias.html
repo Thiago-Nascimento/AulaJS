@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Svigufo - Eventos públicos e privados</title>
+  <!-- Estilos -->
+  <link rel="stylesheet" href="./css/flexbox.css" />
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+  <style>
+    .input1 {
+      border: 2px solid red;
+    }
+
+    .input2 {
+      border: 2px solid green;
+    }
+
+    #nome-tipo-evento {
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <header class="cabecalhoPrincipal">
+      <div class="container">
+        <img src="./assets/img/icon-login.png" />
+
+        <nav class="cabecalhoPrincipal-nav">
+          Administrador
+        </nav>
+      </div>
+    </header>
+
+    <main class="conteudoPrincipal">
+      <section class="conteudoPrincipal-cadastro">
+
+        <h1 class="conteudoPrincipal-cadastro-titulo">Tipos de Eventos</h1>
+        <div class="container" id="conteudoPrincipal-lista">
+
+
+          <table id="tabela-lista">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Título</th>
+              </tr>
+            </thead>
+
+            <tbody id="tabela-lista-corpo"></tbody>
+
+          </table>
+        </div>
+        <div id="teste">
+
+        </div>
+        <div class="container" id="conteudoPrincipal-cadastro">
+          <script>
+            for(let idade = 37; idade <= 50; idade++){
+              document.write(idade, "<br>");
+            }  
+            document.write(idade, "<br>");
+          </script>
+          <h2 class="conteudoPrincipal-cadastro-titulo">
+            Cadastrar Tipo de Evento
+          </h2>
+          <form>
+            <div class="container">
+
+              <input class="" type="text" id="codigo" placeholder="codigo do evento"/>
+              <input class="" type="text" id="nome-tipo-evento" placeholder="tipo do evento" onkeyup="inserir()" />
+              <button onclick="enviar()" class="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro">
+                Cadastrar
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="rodapePrincipal">
+      <section class="rodapePrincipal-patrocinadores">
+        <div class="container">
+          <p id="rodape" class="pp">Escola SENAI de Informática - 2019</p>
+        </div>
+      </section>
+    </footer>
+  </div>
+  <script>
+    // window.document.getElementsByTagName("p")[0].innerHTML = "Olá Mundo!";
+    // window.document.getElementsByClassName("pp")[0].innerHTML = "Olá Mudo HEHE";
+    // document.getElementById("rodape").innerHTML = "Olá!";
+    // document.querySelector("#rodape").innerHTML = "Mudança por querySelector e ID";
+    // document.querySelector(".pp").innerHTML = "Mudança por querySelector e CLASS"; // Modifica o primeiro item encontrado da classe    
+    // document.querySelectorAll(".pp") = "Mudança por querySelectorAll e CLASS"; // Modifica todos os itens da classe    
+    
+    var a = document.getElementById("nome-tipo-evento");
+    var b = document.getElementById("codigo");
+
+    function inserir() {
+      var txt = a.value;
+      if(txt.length > 3) {
+        a.className = "input2";
+      } else {
+        a.className = "input1";
+      }
+    }
+
+    // // Criou elemento "p" dentro da div teste
+    // function enviar() {
+    //   event.preventDefault(); // Previne o reload da página que é feito por padrão
+            
+    //   var divTeste = document.getElementById("teste");
+    //   var p = document.createElement("p");
+
+    //   divTeste.appendChild(p);
+
+    //   p.textContent = a.value;
+    // }
+
+      function enviar() {
+        event.preventDefault();
+
+        var tabela = document.getElementById("tabela-lista-corpo");
+
+        var linha = document.createElement("tr");
+        tabela.appendChild(linha);
+
+        var colunaId = document.createElement("td");
+        linha.appendChild(colunaId);
+        colunaId.textContent = b.value;
+
+        var colunaNome = document.createElement("td");
+        linha.appendChild(colunaNome);
+        colunaNome.textContent = a.value;
+
+        a.value = "";
+        b.value = "";
+
+        a.className = null;
+      }
+
+  </script>
+
+</body>
+
+</html>
